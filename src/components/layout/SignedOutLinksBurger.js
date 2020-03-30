@@ -38,9 +38,9 @@ class SignedOutLinksBurger extends Component {
                 onClick={() => {
                   this.closeMenu();
                 }}
-                to="/signup"
+                to="/signin"
               >
-                <span className="bold-text-style">Sign Up</span>
+                <span className="bold-text-style">Sign In</span>
               </NavLink>
             </div>
 
@@ -49,9 +49,9 @@ class SignedOutLinksBurger extends Component {
                 onClick={() => {
                   this.closeMenu();
                 }}
-                to="/signin"
+                to="/signup"
               >
-                <span className="bold-text-style">Sign In</span>
+                <span className="bold-text-style">Sign Up</span>
               </NavLink>
             </div>
           </div>
