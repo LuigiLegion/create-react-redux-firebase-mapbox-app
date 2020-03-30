@@ -1,13 +1,16 @@
-### Setting Up Development Environment:
+### Setting Up Dev Environment:
 
-- clone the repo and `npm install` the dependencies
-- In the `src/config/` directory rename all the `.example.js` to remove the `.example`.
-- In the `src/data/` directory rename all the `.example.js` to remove the `.example`.
-- Fill in your actual keys and dummy data
-- `npm run start` will run in a dev environment
-- Create a Firestore db and set it's rules to:
+- Clone the repo and `npm install` the dependencies.
+- Create a Firebase project.
+- Create a Firestore db using the following schema:
 
+```javascript
+SCHEMA PLACEHOLDER
 ```
+
+- Set the Firestore db rules to the following rules:
+
+```javascript
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
@@ -20,4 +23,13 @@ service cloud.firestore {
     }
   }
 }
+```
+
+- Fill in your actual keys in `src/config/`.
+- `npm run start` will run in a dev environment.
+
+### Firebase Deployment:
+
+```javascript
+DEPLOYMENT PLACEHOLDER
 ```
