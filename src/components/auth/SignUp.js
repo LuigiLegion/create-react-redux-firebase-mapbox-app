@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { stations } from '../../data/nyc-subway-stations.json';
 import { signUpThunkCreator } from '../../store/reducers/authReducer';
-// import signupAccessToken from '../../config/signupConfig';
+import signupAccessToken from '../../config/signupConfig';
 
 const defaultLocation = stations[0];
 
@@ -20,8 +20,8 @@ export class SignUp extends Component {
       gender: 'Male',
       company: 'N/A',
       location: defaultLocation,
-      // accessToken: '',
-      // accessTokenError: false,
+      accessToken: '',
+      accessTokenError: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -56,18 +56,17 @@ export class SignUp extends Component {
 
     event.preventDefault();
 
-    // if (this.state.accessToken === signupAccessToken) {
-    //   this.setState({
-    //     accessTokenError: false,
-    //   });
-    //   this.props.signUpThunk(this.state);
-    // } else {
-    //   this.setState({
-    //     accessTokenError: true,
-    //   });
-    // }
+    if (this.state.accessToken === signupAccessToken) {
+      this.setState({
+        accessTokenError: false,
+      });
 
-    this.props.signUpThunk(this.state);
+      this.props.signUpThunk(this.state);
+    } else {
+      this.setState({
+        accessTokenError: true,
+      });
+    }
   }
 
   render() {
@@ -91,11 +90,13 @@ export class SignUp extends Component {
                 type="email"
                 id="email"
                 required
+                autoComplete="username"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Example: cody@email.com"
                 onChange={this.handleChange}
               />
             </div>
+
             <div className="input-field">
               <label htmlFor="password">
                 Password<span className="red-text-color">*</span> (May only
@@ -107,6 +108,7 @@ export class SignUp extends Component {
                 type="password"
                 id="password"
                 required
+                autoComplete="current-password"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}"
                 title="May only contain one uppercase letter, one lowercase letter, one digit, and at least 8 characters in total"
                 onChange={this.handleChange}
@@ -227,7 +229,7 @@ export class SignUp extends Component {
               </select>
             </div>
 
-            {/* <div className="input-field">
+            <div className="input-field">
               <label htmlFor="accessToken">
                 Access Token<span className="red-text-color">*</span> (Must
                 match the access token you received via email invitation)
@@ -236,19 +238,20 @@ export class SignUp extends Component {
                 type="text"
                 id="accessToken"
                 required
+                title="Must
+                match the access token you received via email invitation"
                 onChange={this.handleChange}
               />
-            </div> */}
+            </div>
 
             <button className="btn blue lighten-1 z-depth-0">Sign Up</button>
+
             <div className="red-text center">
-              {/* {authError ? (
+              {authError ? (
                 <p>{authError}</p>
               ) : this.state.accessTokenError ? (
                 'Invalid Access Token! Please try again.'
-              ) : null} */}
-
-              {authError ? <p>{authError}</p> : null}
+              ) : null}
             </div>
           </form>
         </div>

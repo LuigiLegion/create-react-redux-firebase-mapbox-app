@@ -25,6 +25,7 @@ export class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     this.props.signInThunk(this.state);
   }
 
@@ -43,16 +44,26 @@ export class SignIn extends Component {
               <label htmlFor="email">
                 Email<span className="red-text-color">*</span>
               </label>
-              <input type="email" id="email" onChange={this.handleChange} />
+
+              <input
+                type="email"
+                id="email"
+                required
+                autoComplete="username"
+                onChange={this.handleChange}
+              />
             </div>
 
             <div className="input-field">
               <label htmlFor="password">
                 Password<span className="red-text-color">*</span>
               </label>
+
               <input
                 type="password"
                 id="password"
+                required
+                autoComplete="current-password"
                 onChange={this.handleChange}
               />
             </div>
@@ -72,8 +83,8 @@ export class SignIn extends Component {
 }
 
 const mapStateToProps = state => ({
-  authError: state.auth.authError,
   auth: state.firebase.auth,
+  authError: state.auth.authError,
 });
 
 const mapDispatchToProps = dispatch => ({
