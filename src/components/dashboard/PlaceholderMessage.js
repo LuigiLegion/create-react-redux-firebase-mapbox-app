@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Placeholder = props => {
+const PlaceholderMessage = props => {
   return (
     <div className="section">
       <div className="card z-depth-0">
@@ -8,6 +8,7 @@ const Placeholder = props => {
           <span className="card-title">
             <span className="bold-text-style">Placeholder</span>
           </span>
+
           <ul className="placeholder">
             <li>
               <span>Welcome to your new Map app!</span>
@@ -19,4 +20,4 @@ const Placeholder = props => {
   );
 };
 
-export default Placeholder;
+export default PlaceholderMessage;
